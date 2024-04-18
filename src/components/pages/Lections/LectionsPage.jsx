@@ -39,9 +39,16 @@ const LectionsPage = () => {
 					</div>
 				</div>
 			)}
-			<div>
-				<button onClick={() => setIsModalOpen(true)}>Добавить лекцию</button>
-			</div>
+			{/* <button onClick={() => setIsModalOpen(true)}>Добавить лекцию</button> */}
+			{/* <div className={s.file_wrapper}>
+			
+				<embed
+					src='time-managment.pdf'
+					type='application/pdf'
+					width='80%'
+					height='80%'
+				></embed>
+			</div> */}
 		</>
 	)
 }

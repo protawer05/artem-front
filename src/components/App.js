@@ -1,5 +1,6 @@
 import { HashRouter, Outlet, Route, Routes } from 'react-router-dom'
 
+import dayjs from 'dayjs'
 import { useState } from 'react'
 import './App.css'
 import Navigation from './navigation/Navigation'
@@ -8,10 +9,16 @@ import LectionsPage from './pages/Lections/LectionsPage'
 import LoginPage from './pages/Login/LoginPage'
 import TestsPage from './pages/Tests/TestsPage'
 export const HomeLayout = ({ auth }) => {
+	const fullName = JSON.parse(localStorage.getItem('fullName'))
+	const date = dayjs().format('DD/MM/YYYY')
 	return (
 		<div className='App'>
 			<Navigation auth={auth} />
 			<main>
+				<header>
+					<h2>Приветствую {fullName}</h2>
+					<div className=''>Сегодня {date}</div>
+				</header>
 				<Outlet />
 			</main>
 		</div>
