@@ -2,3 +2,9 @@
 	height: 100%;
 	display: flex;
 }
+main {
+	margin: 10px;
+}
+header {
+	margin-bottom: 30px;
+}

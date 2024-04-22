@@ -7,13 +7,14 @@ import Navigation from './navigation/Navigation'
 import LabsPage from './pages/Labs/LabsPage'
 import LectionsPage from './pages/Lections/LectionsPage'
 import LoginPage from './pages/Login/LoginPage'
+import RegisterPage from './pages/Register/RegisterPage'
 import TestsPage from './pages/Tests/TestsPage'
-export const HomeLayout = ({ auth }) => {
+export const HomeLayout = ({ auth, setAuth }) => {
 	const fullName = JSON.parse(localStorage.getItem('fullName'))
 	const date = dayjs().format('DD/MM/YYYY')
 	return (
 		<div className='App'>
-			<Navigation auth={auth} />
+			<Navigation auth={auth} setAuth={setAuth} />
 			<main>
 				<header>
 					<h2>Приветствую {fullName}</h2>
@@ -34,7 +35,12 @@ function App() {
 					path='/login'
 					element={<LoginPage auth={auth} setAuth={setAuth} />}
 				/>
-				<Route element={<HomeLayout auth={auth} />}>
+				<Route
+					index
+					path='/register'
+					element={<RegisterPage auth={auth} setAuth={setAuth} />}
+				/>
+				<Route element={<HomeLayout auth={auth} setAuth={setAuth} />}>
 					<Route path='/' element={<LectionsPage />} />
 					<Route path='/labs' element={<LabsPage />} />
 					<Route path='/tests' element={<TestsPage />} />

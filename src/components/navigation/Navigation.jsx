@@ -2,12 +2,22 @@ import React from 'react'
 import { NavLink, Navigate } from 'react-router-dom'
 import img1 from '../../assets/navImage1.svg'
 import s from './navigation.module.scss'
-const Navigation = ({ auth }) => {
+const Navigation = ({ auth, setAuth }) => {
+	const group = JSON.parse(localStorage.getItem('group'))
+	const onClickExit = () => {
+		setAuth(false)
+		localStorage.removeItem('userName')
+		localStorage.removeItem('password')
+	}
 	return (
 		<>
 			{!auth && <Navigate to='/login' replace={true} />}
 			<div className={s.wrapper}>
-				<h1 className={s.logo}>КИС-201</h1>
+				<div className={s.logo_wrapper} onClick={() => onClickExit()}>
+					<button className={s.logout}>Выйти</button>
+					<h1 className={s.logo}>{group}</h1>
+				</div>
+
 				<nav className={s.nav}>
 					<NavLink
 						to='/'

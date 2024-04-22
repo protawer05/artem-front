@@ -1,11 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
-import s from './loginPage.module.scss'
-
-const LoginPage = ({ auth, setAuth }) => {
+import s from './registerPage.module.scss'
+const RegisterPage = ({ auth, setAuth }) => {
 	const [userName, setUserName] = useState('')
 	const [password, setPassword] = useState('')
+	const [fullName, setFullName] = useState('')
+	const [group, setGroup] = useState('')
 	const fetchLogin = async () => {
 		const userName = JSON.parse(localStorage.getItem('userName'))
 		const password = JSON.parse(localStorage.getItem('password'))
@@ -26,9 +27,11 @@ const LoginPage = ({ auth, setAuth }) => {
 	}, [])
 
 	const handleSubmit = async () => {
-		const response = await axios.post('http://localhost:4444/login', {
+		const response = await axios.post('http://localhost:4444/register', {
 			userName,
 			password,
+			fullName,
+			group,
 		})
 		if (response.status === 200) {
 			console.log(response)
@@ -45,35 +48,44 @@ const LoginPage = ({ auth, setAuth }) => {
 			<div className={s.wrapper}>
 				<div className={s.content__wrapper}>
 					<form>
-						<label>Login</label>
-						<div className={s.inputs__container_login}>
+						<label>Register</label>
+						<div className={s.inputs__container_register}>
 							<input
 								type='text'
-								placeholder='Username'
+								placeholder='Имя Фамилия'
+								onChange={e => setFullName(e.target.value)}
+							/>
+							<input
+								type='text'
+								placeholder='Логин'
 								onChange={e => setUserName(e.target.value)}
 							/>
 							<input
 								type='text'
-								placeholder='Password'
+								placeholder='Пароль'
 								onChange={e => setPassword(e.target.value)}
 							/>
+							<input
+								type='text'
+								placeholder='Группа'
+								onChange={e => setGroup(e.target.value)}
+							/>
 						</div>
-						<button
-							type='submit'
-							className={s.login_button}
-							onClick={handleSubmit}
-						>
-							Login
-						</button>
+						<div className={s.register_button__container}>
+							<button
+								type='submit'
+								className={s.register_button}
+								onClick={() => handleSubmit()}
+							>
+								Register
+							</button>
+							<Link to='/login'>Have account? Sign In</Link>
+						</div>
 					</form>
-					<div className={s.register}>
-						Если вы еще не зарегистрированы, нажмите{' '}
-						<Link to='/register'>Регистрация</Link>
-					</div>
 				</div>
 			</div>
 		</>
 	)
 }
 
-export default LoginPage
+export default RegisterPage

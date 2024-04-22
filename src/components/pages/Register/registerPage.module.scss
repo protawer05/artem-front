@@ -38,21 +38,33 @@ input::placeholder {
 	max-width: 456px;
 	margin: 0 auto;
 }
+.register {
+	margin-top: -30px;
+	padding-bottom: 20px;
+}
 
-.login_button {
+.register_button {
+	background-color: #8b54ff;
 	color: #fff;
-	background-color: #252eff;
 	padding: 10px 0px;
 	border: 0px;
 	border-radius: 20px;
 	width: 352px;
-	margin-top: -30px;
-	text-transform: uppercase;
-	margin-bottom: 66px;
-	width: 153px;
 }
-.register {
-	margin-top: -30px;
-	padding-bottom: 20px;
-	text-align: center;
+.register_button__container {
+	margin-top: -20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+	margin-bottom: 26px;
+}
+.inputs__container_register {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	margin-bottom: 56px;
+}
+.inputs__container_register input {
+	border-radius: 10px;
 }
