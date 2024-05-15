@@ -48,7 +48,7 @@ const RegisterPage = ({ auth, setAuth }) => {
 			<div className={s.wrapper}>
 				<div className={s.content__wrapper}>
 					<form>
-						<label>Register</label>
+						<label>Регистрация</label>
 						<div className={s.inputs__container_register}>
 							<input
 								type='text'
@@ -77,9 +77,9 @@ const RegisterPage = ({ auth, setAuth }) => {
 								className={s.register_button}
 								onClick={() => handleSubmit()}
 							>
-								Register
+								Зарегестрироваться
 							</button>
-							<Link to='/login'>Have account? Sign In</Link>
+							<Link to='/login'>Уже есть аккаунт? Войдите</Link>
 						</div>
 					</form>
 				</div>

@@ -45,16 +45,16 @@ const LoginPage = ({ auth, setAuth }) => {
 			<div className={s.wrapper}>
 				<div className={s.content__wrapper}>
 					<form>
-						<label>Login</label>
+						<label>Логин</label>
 						<div className={s.inputs__container_login}>
 							<input
 								type='text'
-								placeholder='Username'
+								placeholder='Имя пользователя'
 								onChange={e => setUserName(e.target.value)}
 							/>
 							<input
 								type='text'
-								placeholder='Password'
+								placeholder='Пароль'
 								onChange={e => setPassword(e.target.value)}
 							/>
 						</div>
@@ -63,7 +63,7 @@ const LoginPage = ({ auth, setAuth }) => {
 							className={s.login_button}
 							onClick={handleSubmit}
 						>
-							Login
+							Войти
 						</button>
 					</form>
 					<div className={s.register}>

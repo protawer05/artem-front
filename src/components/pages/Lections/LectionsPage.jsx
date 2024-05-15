@@ -1,36 +1,91 @@
-import axios from 'axios'
 import React, { useState } from 'react'
 import s from './lectionPage.module.scss'
 const lections = [
 	{
-		title: 'Economics',
-		desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora, deleniti.',
-		fileName: 'time-managment.pdf',
+		title: '01_понятие аппаратных средств и архитектура',
+		fileName: './lections/01_понятие аппаратных средств и архитектура.pdf',
 	},
 	{
-		title: 'Math',
-		desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora, deleniti.',
-		fileName: 'time-managment.pdf',
+		title: '01_Понятие аппаратных средств эвм и архитектуры',
+		fileName: './lections/01_ponyatie_apparatnyh_sredstv_evm_i_arhitektury.pdf',
 	},
 	{
-		title: 'Physic',
-		desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora, deleniti. Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, possimus?',
-		fileName: 'time-managment.pdf',
+		title: '02_Архитектура и топологии вычислительных систем',
+		fileName: './lections/02_Архитектура и топологии вычислительных систем.pdf',
 	},
 	{
-		title: 'Algebra',
-		desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora, deleniti. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non nobis mollitia rerum laborum ipsum, aliquam dolor facilis esse optio quibusdam tenetur maxime maiores quas dolore quam harum odit eius earum?',
-		fileName: 'time-managment.pdf',
+		title: '03_история ВТ (все поколения)',
+		fileName: './lections/03_история ВТ (все поколения).pdf',
 	},
 	{
-		title: 'Ecologia',
-		desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora, deleniti.',
-		fileName: 'time-managment.pdf',
+		title: '03_история развития ВТ',
+		fileName: './lections/03_история развития ВТ.pdf',
 	},
 	{
-		title: 'Aboba',
-		desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora, deleniti.',
-		fileName: 'time-managment.pdf',
+		title: '03_нулевое_поколение_ВТ',
+		fileName: './lections/03_нулевое_поколение_ВТ.pdf',
+	},
+	{
+		title: '04_классификация ЭВМ',
+		fileName: './lections/04_классификация ЭВМ.pdf',
+	},
+	{
+		title: '05_основные характеристики ЭВМ',
+		fileName: './lections/05_основные характеристики ЭВМ.pdf',
+	},
+	{
+		title: '06_1_основные элементы ЭВМ',
+		fileName: './lections/06_1_основные элементы ЭВМ.pdf',
+	},
+	{
+		title: '06_2_Узлы ЭВМ',
+		fileName: './lections/06_2_Узлы ЭВМ.pdf',
+	},
+	{
+		title: '06_3_как производятся процессоры',
+		fileName: './lections/06_3_как производятся процессоры.pdf',
+	},
+	{
+		title: '06_основные элементы ЭВМ',
+		fileName: './lections/06_основные элементы ЭВМ.pdf',
+	},
+	{
+		title: '07_01_принципы построения ЭВМ',
+		fileName: './lections/07_01_принципы построения ЭВМ.pdf',
+	},
+	{
+		title: '07_02_оперативная память',
+		fileName: './lections/07_02_оперативная память.pdf',
+	},
+	{
+		title: '07_03_кеш-память',
+		fileName: './lections/07_03_кеш-память.pdf',
+	},
+	{
+		title: '07_04_hdd',
+		fileName: './lections/07_04_hdd.pdf',
+	},
+	{
+		title: '07_05_ssd',
+		fileName: './lections/07_05_ssd.pdf',
+	},
+	{
+		title: '07_07_иерархия шин',
+		fileName: './lections/07_07_иерархия шин.pdf',
+	},
+	{
+		title: '08_технологии повышения производительности процессоров',
+		fileName:
+			'./lections/08_технологии повышения производительности процессоров.pdf',
+	},
+	{
+		title: '09_Оценка производительности вычислительных систем и ПК',
+		fileName:
+			'./lections/09_Оценка производительности вычислительных систем и ПК.pdf',
+	},
+	{
+		title: '10_01_периферийные устройства',
+		fileName: './lections/10_01_периферийные устройства.pdf',
 	},
 ]
 const Embed = ({ fileName, setIsFileOpen }) => {
@@ -56,7 +111,6 @@ const LectionItem = ({ obj }) => {
 	return (
 		<div className={s.lection_item}>
 			<h3 className={s.item_title}>{obj.title}</h3>
-			<p className={s.item_desc}>{obj.desc}</p>
 			<button className={s.item_file} onClick={() => setIsFileOpen(true)}>
 				Открыть файл
 			</button>
@@ -77,47 +131,3 @@ const LectionsPage = () => {
 }
 
 export default LectionsPage
-
-const LectionsPageOld = () => {
-	const [isModalOpen, setIsModalOpen] = useState(false)
-	const [file, setFile] = useState()
-	const [title, setTitle] = useState('')
-	const [desc, setDesc] = useState('')
-	const handleSubmit = async () => {
-		console.log(file)
-		const formData = new FormData()
-		formData.append('text', file)
-		await axios.post('http://localhost:4444/upload', formData)
-	}
-	return (
-		<>
-			{isModalOpen && (
-				<div className={s.modal_wrapper}>
-					<div className={s.modal}>
-						<button
-							className={s.close_modal}
-							onClick={() => setIsModalOpen(false)}
-						>
-							X
-						</button>
-						<div className={s.input_wrapper}>
-							<div className={s.title}>Название лекции</div>
-							<input type='text' onChange={e => setTitle(e.target.value)} />
-						</div>
-						<div className={s.input_wrapper}>
-							<div className={s.title}>Описании лекции</div>
-							<input type='text' onChange={e => setDesc(e.target.value)} />
-						</div>
-						<div className={s.input_wrapper}>
-							<div className={s.title}>txt файл лекции</div>
-							<input type='file' onChange={e => setFile(e.target.files[0])} />
-							<button onClick={handleSubmit}>Отправить</button>
-						</div>
-					</div>
-				</div>
-			)}
-			{/* <button onClick={() => setIsModalOpen(true)}>Добавить лекцию</button> */}
-			{/* */}
-		</>
-	)
-}
