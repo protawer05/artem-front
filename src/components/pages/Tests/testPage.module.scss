@@ -1,0 +1,20 @@
+.answer_wrapper {
+	margin-top: 15px;
+	display: flex;
+	font-size: 20px;
+	justify-content: start;
+	input {
+		max-width: 15px;
+	}
+}
+.next_question {
+	margin-top: 20px;
+	color: #fff;
+	background-color: #252eff;
+	padding: 10px 0px;
+	border: 0px;
+	border-radius: 20px;
+	width: 352px;
+	width: 153px;
+	cursor: pointer;
+}
